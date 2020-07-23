@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head  th:fragment="head">
+  <meta charset="utf-8" ></meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" ></meta>
+  <title th:text="${title}">CRUD Java</title>
+  <link rel="icon" type="image/ico"  th:href="@{/img/fenix_favicon.ico}" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" ></meta>
+  <link rel="stylesheet" th:href="@{/webjars/jquery-ui/jquery-ui.min.css}"  ></link>
+  <link rel="stylesheet" th:href="@{/webjars/jquery-ui/jquery-ui.theme.min.css}"  ></link>
+  <link rel="stylesheet" th:href="@{/css/AdminLTE.min.css}"  ></link>
+  <link rel="stylesheet" th:href="@{/css/skins/_all-skins.min.css}"  ></link>
+  <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/font-awesome.min.css}"  ></link>
+  <link rel="stylesheet" th:href="@{/webjars/ionicons/css/ionicons.min.css}"  ></link>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  ></link>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/css/bootstrap-datepicker.min.css}"  ></link>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap-daterangepicker/css/bootstrap-daterangepicker.css}"  ></link>
+  
+  <!--[if lt IE 9]>
+  <script th:src="@{/webjars/html5shiv/html5shiv.min.js}"></script>
+  <script th:src="@{/webjars/respond/dest/respond.min.js}"></script>
+  <![endif]-->
+
+   <link rel="stylesheet" th:href="@{/css/source-sans-pro/source-sans-pro.css}"/>
+   
+   <th:block layout:fragment="content-head" />
+   
+   <script th:inline="javascript">
+	/*<![CDATA[*/
+		var _csrf_header = /*[[${_csrf.headerName}]]*/;
+	    var _csrf 		 = /*[[${_csrf.token}]]*/;
+	    var _path 		 = /*[[@{/}]]*/;
+	/*]]>*/
+	</script>
+
+	<style type="text/css">
+	  	table.dataTable thead .sorting:after {
+	    	padding-right: 8px;
+	    	visibility: hidden;
+		}
+		
+		table.dataTable thead .sorting_asc:after {
+		    padding-right: 8px;
+		    visibility: hidden;
+		}
+		
+		table.dataTable thead .sorting_desc:after {
+		    padding-right: 8px;
+		    visibility: hidden;
+		}
+			
+		div.dataTables_wrapper div.dataTables_info {
+	    	padding-top: 0px;
+		}
+		
+		div.dataTables_wrapper div.dataTables_paginate {
+		    margin: 7px;
+		}
+			
+		/* Para quitar el spinner que aparece en los inputs de type NUMBER (chrome)*/
+		input[type=number]::-webkit-inner-spin-button, 
+		input[type=number]::-webkit-outer-spin-button { 
+  			-webkit-appearance: none; 
+  			margin: 0; 
+		}
+		
+	</style> 
+</head>
+
+<body class="hold-transition skin-red-light sidebar-mini" style="padding-right: 0px !important">
+
+<div class="wrapper">
+
+  <header class="main-header"> 
+    
+    <a th:href="@{/}" class="logo">
+  
+      <span class="logo-mini"><i class="fa fa-edit"></i></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><i class="fa fa-edit"></i>  <b> CRUD Java </b> <i class="fa fa-coffee"></i>  </span>
+    </a>
+ 
+    <nav class="navbar navbar-static-top">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Desplegar Navegación</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+                   
+        </ul>
+      </div>
+    <div class="pull-right hidden-xs" style="color: white; padding-right: 10px;">
+      <b th:text="${@environment.getProperty('system.name')}">fenix</b>-<i th:text="${@environment.getProperty('system.version')}">0.0.0-SNAPSHOT</i>
+    </div>
+
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+    <!-- Sidebar user panel 
+	<div class="user-panel">
+	    <div class="pull-left image">
+	      <img sec:authentication="gravatar" class="img-circle" alt="User Image" />
+	    </div>
+	    <div class="pull-left info">
+	      <p><span sec:authentication="name" ></span></p>
+	      <a href="#"><i class="fa fa-gear text-success"></i> Perfíl</a>
+	    </div>
+	</div>
+	-->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MENU PRINCIPAL</li>
+        
+   
+	         <li sec:authorize-url="/usuario" th:class="${#strings.equals(selectedRootOption,'setup')}? 'treeview active menu-open':'treeview'">
+	          <a href="#">
+	            <i class="fa fa-users"></i>
+	            <span>Personas</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">	            
+	            <li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/personas}"><i class="fa fa-users"></i> ABM Personas</a>
+	            </li>    
+	            
+	            <!-- >li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/abm}"><i class="fa fa-users"></i> ABM Manual </a>
+	            </li-->        
+	          </ul>
+	     	        </li>
+         
+         
+         <!-- Agregado vehiculo -->
+         
+              <li sec:authorize-url="/usuario" th:class="${#strings.equals(selectedRootOption,'setup')}? 'treeview active menu-open':'treeview'">
+	          <a href="#">
+	            <i class="fa fa-car"></i>
+	            <span>Vehiculos</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">	            
+	           
+	            
+	            <li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/vehiculos}"><i class="fa fa-car"></i> ABM Vehiculos </a>
+	            </li>      
+	            
+	             
+	          </ul>
+	     	        </li>
+        <!-- fin de Agregado Vehiculo -->
+        
+         <!-- Agregado nuevo -->
+         
+              <li sec:authorize-url="/usuario" th:class="${#strings.equals(selectedRootOption,'setup')}? 'treeview active menu-open':'treeview'">
+	          <a href="#">
+	            <i class="fa fa-archive"></i>
+	            <span>Insumos</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">	            
+	            <li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/insumos}"><i class="fa fa-archive"></i> ABM Insumos </a>
+	            </li>    
+	            
+	             
+	          </ul>
+	     	        </li>
+        <!-- fin de Agregado nuevo -->
+         
+        	<!-- <li  sec:authorize-url="/usuario" th:class="${#strings.equals(selectedRootOption,'setup')}? 'treeview active menu-open':'treeview'">
+	          <a href="#">
+	            <i class="fa fa-building"></i>
+	            <span>Servicios</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+	            <li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/servicios}"><i class="fa fa-dollar"></i> Servicios</a>
+		    	</li>
+	          	<li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/liquidacion}"><i class="fa fa-calculator"></i> Liquidación</a>
+	            </li>
+	            <li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/presentacion}"><i class="fa fa-bank"></i> Presentacion</a>
+	            </li>	            
+	            <li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/proveedores}"><i class="fa fa-industry"></i> Proveedores</a>
+	            </li>
+
+	          </ul>
+	        </li>
+ -->        
+<!--         	<li th:class="${#strings.equals(selectedRootOption,'setup')}? 'treeview active menu-open':'treeview'">
+	          <a href="#">
+	            <i class="fa fa-gears"></i>
+	            <span>Configuración</span>
+	            <span class="pull-right-container">
+	              <i class="fa fa-angle-left pull-right"></i>
+	            </span>
+	          </a>
+	          <ul class="treeview-menu">
+	            li sec:authorize-url="/usuario">
+	            	<a th:href="@{/usuario/bancos}"><i class="fa fa-bank"></i> Bancos</a>
+	            </li 
+	            <li sec:authorize-url="/usuario">
+	            	<a th:href="@{/admin/periodos}"><i class="fa fa-calendar"></i> Periodos</a>
+	            </li>
+	            <li sec:authorize-url="/genoma">
+	            	<a th:href="@{/genoma/clientes}"><i class="fa fa-building-o"></i> Clientes</a>
+	            </li>
+	            <li sec:authorize-url="/admin">
+	            	<a th:href="@{/admin/afiliados/tipos}"><i class="fa fa-tag"></i> Tipos Afiliados</a>
+	            </li>	            
+	          </ul>
+	        </li>        
+ -->
+ 
+        
+        <li sec:authorize="hasAuthority('GENOMA')">
+        	<a th:href="@{/swagger-ui.html}" ><i class="fa fa-exchange"></i> <span>API REST</span></a>
+        </li>
+        <li><a th:href="@{/info}"><i class="fa fa-info-circle"></i> <span>Información</span></a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/iac/logout"><i class="fa fa-power-off"></i> <span>Salir</span></a></li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <div class="content-wrapper">
+  
+   <th:block layout:fragment="content-header"></th:block>
+   <br/>
+   <th:block layout:fragment="content"></th:block>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer" th:fragment="main-footer">
+		  <b>CSRF: </b><i th:text="${_csrf.token}"></i><br />
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+
+	<!--  modals -->
+	<!-- Modal WAIT-->
+	<div class="modal fade" id="wait-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+				<div style="vertical-align: middle;text-align:center;closeButton:false;display:block;padding-top:50%" >
+	  				<i class="fa fa-5x fa-inverse fa-spinner fa-spin"></i>
+			</div>
+		</div>
+	</div>
+	<!-- /.modal WAIT-->
+	
+	<!-- /.modal SUCCESS -->
+	<div class="modal modal-success fade" id="modal-success">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
+		      <h4 class="modal-title"><i class="icon fa fa-check"></i> Operación exitosa</h4>
+		    </div>
+		    <div class="modal-body">
+		      <p id="modal-success-message"></p>
+		    </div>
+		    <div class="modal-footer">
+		      <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+		    </div>
+		  </div>
+		  <!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal SUCCESS -->
+
+	<!-- /.modal WARNING -->
+	<div class="modal modal-warning fade" id="modal-warning">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
+		      <h4 class="modal-title"><i class="icon fa fa-warning"></i> Atención</h4>
+		    </div>
+		    <div class="modal-body">
+		      <p id="modal-warning-message"></p>
+		    </div>
+		    <div class="modal-footer">
+		      <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+		    </div>
+		  </div>
+		  <!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal WARNING -->
+	
+    <!-- modal ERROR -->
+    <div class="modal modal-danger fade" id="modal-error">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
+            <h4 id="modal-error-title" class="modal-title"></h4>
+          </div>
+          <div id="modal-error-body" class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal ERROR -->
+<!--  ./modals -->
+
+
+<!-- jQuery 3 -->	
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>	
+<!-- jQuery UI 1.11.4 -->
+<script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<!-- Morris.js charts -->
+<script th:src="@{/webjars/raphaeljs/raphael-min.js}"></script>
+<script th:src="@{/webjars/morrisjs/morris.min.js}"></script>
+<!-- Sparkline -->
+<script th:src="@{/webjars/jquery.sparkline/jquery.sparkline.min.js}"></script>
+<!-- daterangepicker -->
+<script th:src="@{/webjars/momentjs/min/moment.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-daterangepicker/js/bootstrap-daterangepicker.js}"></script>
+<!-- datepicker -->
+<script th:src="@{/webjars/bootstrap-datepicker/js/bootstrap-datepicker.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js}"></script>
+<!-- Slimscroll -->
+<script th:src="@{/webjars/jQuery-slimScroll/jquery.slimscroll.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{/webjars/fastclick/fastclick.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/js/adminlte.min.js}"></script>
+<script th:src="@{/js/utils.js}"></script>
+<th:block layout:fragment="footer-script"/>
+</body>
+</html>

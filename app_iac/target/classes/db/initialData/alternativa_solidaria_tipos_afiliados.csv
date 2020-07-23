@@ -1,0 +1,8 @@
+id;descripcion;client_id;version;created_time;created_user;updated_time;updated_user;deleted_time
+usr_tipo_afiliado_id_seq;ACTIVO;1;1;now();0;now();0;null
+usr_tipo_afiliado_id_seq;PARTICIPANTE;1;1;now();0;now();0;null
+usr_tipo_afiliado_id_seq;ADHERENTE;1;1;now();0;now();0;null
+usr_tipo_afiliado_id_seq;HONORARIO;1;1;now();0;now();0;null
+usr_tipo_afiliado_id_seq;VITALICIOS;1;1;now();0;now();0;null
+usr_tipo_afiliado_id_seq;EXTERNOS;1;1;now();0;now();0;null
+usr_tipo_afiliado_id_seq;PRE-APROBADO;1;1;now();0;now();0;null

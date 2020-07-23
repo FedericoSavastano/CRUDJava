@@ -1,0 +1,4 @@
+id,codigo,descripcion,tipo,client_id,version,created_time,created_user,updated_time,updated_user
+-1,CLASE_BANCO,Clase generadora de Debitos,TEXTO,-1,1,${now},-2,${now},-2
+-2,METODO_GENERAR,Metodo dentro de la clase de debitos que genera el mismo,TEXTO,-1,1,${now},-2,${now},-2
+-3,METODO_DESCARGA,Metodo de descarga de debitos,TEXTO,-1,1,${now},-2,${now},-2

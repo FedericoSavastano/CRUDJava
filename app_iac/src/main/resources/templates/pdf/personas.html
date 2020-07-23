@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style type="text/css">
+
+	  	td {
+	    	padding-right: 8px;
+	    	padding-left: 8px;
+	    	margin-left: 8px;
+	    	margin-right: 8px;
+		}
+
+</style>
+</head>
+<body>
+    <h2 th:text="${titulo}"></h2>
+    
+    <table>
+      <tr th:each="p : ${personas}">
+	    <td th:text="${p.idExterno}">0001</td>
+	    <td th:text="${p.apellido}">Juan</td>
+		<td th:text="${p.nombre}">Perez</td>
+		<td th:text="${p.documento}">24222321</td>
+		<td th:text="${#dates.format(p.fechaNacimiento, 'dd-MM-yyyy')}">10-11-1974</td>
+	    
+      </tr>
+    </table>
+    
+</body>
+</html>

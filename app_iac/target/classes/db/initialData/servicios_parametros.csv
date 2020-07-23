@@ -1,0 +1,5 @@
+id;servicio_id;codigo;valor;tipo;client_id;version;created_time;created_user;updated_time;updated_user
+-30;-1;nroSuscrip;0;NUMERO;-1;1;${now};-2;${now};-2
+-31;-1;colImporte;2;NUMERO;-1;1;${now};-2;${now};-2
+-32;-1;colDescripcion;1;NUMERO;-1;1;${now};-2;${now};-2
+-33;-1;filaInicio;2;NUMERO;-1;1;${now};-2;${now};-2

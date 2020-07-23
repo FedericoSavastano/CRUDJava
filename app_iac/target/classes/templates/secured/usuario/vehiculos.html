@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='CRUD Java - Vehiculos'">
+
+
+<th:block layout:fragment="content-head">
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/jquery.dataTables.min.css}"></link>
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/dataTables.bootstrap.min.css}"></link>
+</th:block>
+
+
+<th:block layout:fragment="content-header">
+	 <section class="content-header">
+	   <h3>
+	     ABM VEHICULOS MANUAL
+	   </h3>
+	 </section> 
+</th:block>
+
+<th:block layout:fragment="content">
+	<section class="content">
+	
+	
+
+		<label>Formulario creación de vehiculos</label>
+		<br></br>
+		<br></br>
+		<label>Patente</label>
+		<br></br>
+		<input id="patente"></input>
+		<br></br>
+		
+		<br></br>
+		<label>Modelo</label>
+		<br></br>
+		<input id="modelo"></input>
+		<br></br>
+		<br></br>
+		<button onclick="guardarVehiculo()">Guardar</button>
+		<br></br>
+		<br></br>
+		 <br></br>
+		<br></br>
+		 
+		
+		<label>Formulario Modificación de vehiculos</label>
+		<br></br>
+		<br></br>
+		<select onchange="cargar()" id="selectVehiculos" >
+		
+		</select>
+		<br></br>
+		<br></br>
+		
+		<label>Patente nueva:</label>
+		<br></br>
+		<input id="patente_edit"></input>
+		<br></br>
+		
+		<br></br>
+		<label>Modelo nuevo:</label>
+		<br></br>
+		<input id="modelo_edit"></input>
+		<br></br>
+		<br></br>
+		<button onclick="actualizarVehiculo()">Actualizar</button>
+		<button onclick="borrarVehiculo()">Borrar</button>
+		<br></br>
+		<br></br>
+		
+		
+			
+		<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Patente</th>
+      <th scope="col">Modelo</th>
+    </tr>
+  </thead>
+  <tbody id="tablabody">
+    <tr>
+      <th scope="row">1</th>
+      
+    </tr>
+    <tr>
+      <th scope="row"  >2</th>
+     
+    </tr>
+    <tr>
+      <th scope="row" >3</th>
+     
+    </tr>
+  </tbody>
+</table>
+		
+		
+	</section>
+
+ 	
+</th:block>
+
+
+<th:block layout:fragment="footer-script">
+	<script th:src="@{/webjars/bootstrap-validator/dist/validator.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/dataTables.bootstrap.min.js}"></script>
+	<script th:src="@{/js/secured/usuario/vehiculo.js}"></script>	
+</th:block>
+
+
+</html>

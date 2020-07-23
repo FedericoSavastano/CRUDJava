@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='F�nix - Mutuales'">
+
+
+<th:block layout:fragment="content-head">
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/jquery.dataTables.min.css}"></link>
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/dataTables.bootstrap.min.css}"></link>
+</th:block>
+
+
+<th:block layout:fragment="content-header">
+	 <section class="content-header">
+	   <h3>
+	     ABM MANUAL
+	   </h3>
+	 </section> 
+</th:block>
+
+<th:block layout:fragment="content">
+	<section class="content">
+	
+	
+
+		<p>hola</p>
+	</section>
+
+ 	
+</th:block>
+
+
+<th:block layout:fragment="footer-script">
+	<script th:src="@{/webjars/bootstrap-validator/dist/validator.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/dataTables.bootstrap.min.js}"></script>
+	<script th:src="@{/js/secured/usuario/personas.js}"></script>	
+</th:block>
+
+
+</html>

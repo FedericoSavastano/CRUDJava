@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorator="layout"
+      th:with="title='CRUD Java | Home'">
+
+<th:block layout:fragment="content-header">
+ <section class="content-header">
+	<h1>
+	<!--	<small>Sistema de Administración de Mutuales y Cooperativas</small>  -->
+	</h1>
+      <ol class="breadcrumb">  
+      	<li><a th:href="@{/}" class="active" ><i class="fa fa-home"></i> Inicio</a></li>                    
+      </ol>
+      <!--  -->
+      	<div sec:authorize="isAuthenticated()">
+	<!-- 	  Este contenido solo puede ser visto por usuarios autenticados.  -->
+		</div>
+		<div sec:authorize="hasAuthority('GENOMA')">
+	<!-- 	  Este contenido solo puede ser visto por usuarios <b>GENOMA</b>. -->
+		</div>
+		<div sec:authorize-url="/admin">
+	<!-- 	  Este contenido solo puede ser visto por los <b>Administradores</b> de la Mutual.  -->
+		  
+		   
+		  <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>New Orders</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>User Registrations</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>65</h3>
+
+              <p>Unique Visitors</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable ui-sortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="nav-tabs-custom" style="cursor: move;">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right ui-sortable-handle">
+              <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
+              <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
+              <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
+            </ul>
+            <div class="tab-content no-padding">
+              <!-- Morris chart - Sales -->
+              <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="300" version="1.1" width="727.156" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.2.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="51.515625" y="261" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><path fill="none" stroke="#aaaaaa" d="M64.015625,261H702.156" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="51.515625" y="202" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">7,500</tspan></text><path fill="none" stroke="#aaaaaa" d="M64.015625,202H702.156" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="51.515625" y="143" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">15,000</tspan></text><path fill="none" stroke="#aaaaaa" d="M64.015625,143H702.156" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="51.515625" y="84.00000000000003" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4.000000000000028" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">22,500</tspan></text><path fill="none" stroke="#aaaaaa" d="M64.015625,84.00000000000003H702.156" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="51.515625" y="25.00000000000003" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4.000000000000028" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">30,000</tspan></text><path fill="none" stroke="#aaaaaa" d="M64.015625,25.00000000000003H702.156" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="585.0731365431349" y="273.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2013</tspan></text><text x="301.28288472053464" y="273.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2012</tspan></text><path fill="#74a5c2" stroke="none" d="M64.015625,219.05493333333334C81.84943863912515,219.56626666666668,117.51706591737546,222.62345,135.35087955650062,221.10026666666667C153.18469319562575,219.57708333333335,188.85232047387606,209.1355825136612,206.6861341130012,206.86946666666668C224.32610195170108,204.6279825136612,259.60603762910085,204.88215,277.2460054678007,203.06986666666666C294.8859733065006,201.25758333333332,330.16590898390035,194.9129178506375,347.8058768226002,192.3712C365.63969046172537,189.80155118397084,401.3073177399757,182.51721666666668,419.14113137910084,182.6244C436.974945018226,182.73158333333333,472.6425722964763,204.18057122040074,490.47638593560146,193.22866666666667C508.11635377430133,182.39580455373408,543.396289451701,101.94395359116024,561.036257290401,95.48533333333336C578.4823793286755,89.09768692449357,613.3746234052248,135.13802307692308,630.8207454434994,141.8436C648.6545590826245,148.69818974358975,684.3221863608749,147.7554,702.156,149.726L702.156,261L64.015625,261Z" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></path><path fill="none" stroke="#3c8dbc" d="M64.015625,219.05493333333334C81.84943863912515,219.56626666666668,117.51706591737546,222.62345,135.35087955650062,221.10026666666667C153.18469319562575,219.57708333333335,188.85232047387606,209.1355825136612,206.6861341130012,206.86946666666668C224.32610195170108,204.6279825136612,259.60603762910085,204.88215,277.2460054678007,203.06986666666666C294.8859733065006,201.25758333333332,330.16590898390035,194.9129178506375,347.8058768226002,192.3712C365.63969046172537,189.80155118397084,401.3073177399757,182.51721666666668,419.14113137910084,182.6244C436.974945018226,182.73158333333333,472.6425722964763,204.18057122040074,490.47638593560146,193.22866666666667C508.11635377430133,182.39580455373408,543.396289451701,101.94395359116024,561.036257290401,95.48533333333336C578.4823793286755,89.09768692449357,613.3746234052248,135.13802307692308,630.8207454434994,141.8436C648.6545590826245,148.69818974358975,684.3221863608749,147.7554,702.156,149.726" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><circle cx="64.015625" cy="219.05493333333334" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="135.35087955650062" cy="221.10026666666667" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="206.6861341130012" cy="206.86946666666668" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="277.2460054678007" cy="203.06986666666666" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="347.8058768226002" cy="192.3712" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="419.14113137910084" cy="182.6244" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="490.47638593560146" cy="193.22866666666667" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="561.036257290401" cy="95.48533333333336" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="630.8207454434994" cy="141.8436" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="702.156" cy="149.726" r="4" fill="#3c8dbc" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><path fill="#eaf3f6" stroke="none" d="M64.015625,240.02746666666667C81.84943863912515,239.8072,117.51706591737546,241.35496666666666,135.35087955650062,239.1464C153.18469319562575,236.93783333333334,188.85232047387606,223.33676429872497,206.6861341130012,222.35893333333334C224.32610195170108,221.39173096539162,259.60603762910085,233.23263333333333,277.2460054678007,231.36626666666666C294.8859733065006,229.4999,330.16590898390035,209.2890577413479,347.8058768226002,207.428C365.63969046172537,205.54649107468123,401.3073177399757,214.43916666666667,419.14113137910084,216.39600000000002C436.974945018226,218.35283333333336,472.6425722964763,232.37947613843355,490.47638593560146,223.08266666666668C508.11635377430133,213.88690947176687,543.396289451701,148.2268241252302,561.036257290401,142.42573333333334C578.4823793286755,136.68839079189686,613.3746234052248,170.47037838827842,630.8207454434994,176.92893333333336C648.6545590826245,183.53101172161175,684.3221863608749,190.23343333333335,702.156,194.66826666666668L702.156,261L64.015625,261Z" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></path><path fill="none" stroke="#a0d0e0" d="M64.015625,240.02746666666667C81.84943863912515,239.8072,117.51706591737546,241.35496666666666,135.35087955650062,239.1464C153.18469319562575,236.93783333333334,188.85232047387606,223.33676429872497,206.6861341130012,222.35893333333334C224.32610195170108,221.39173096539162,259.60603762910085,233.23263333333333,277.2460054678007,231.36626666666666C294.8859733065006,229.4999,330.16590898390035,209.2890577413479,347.8058768226002,207.428C365.63969046172537,205.54649107468123,401.3073177399757,214.43916666666667,419.14113137910084,216.39600000000002C436.974945018226,218.35283333333336,472.6425722964763,232.37947613843355,490.47638593560146,223.08266666666668C508.11635377430133,213.88690947176687,543.396289451701,148.2268241252302,561.036257290401,142.42573333333334C578.4823793286755,136.68839079189686,613.3746234052248,170.47037838827842,630.8207454434994,176.92893333333336C648.6545590826245,183.53101172161175,684.3221863608749,190.23343333333335,702.156,194.66826666666668" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><circle cx="64.015625" cy="240.02746666666667" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="135.35087955650062" cy="239.1464" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="206.6861341130012" cy="222.35893333333334" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="277.2460054678007" cy="231.36626666666666" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="347.8058768226002" cy="207.428" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="419.14113137910084" cy="216.39600000000002" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="490.47638593560146" cy="223.08266666666668" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="561.036257290401" cy="142.42573333333334" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="630.8207454434994" cy="176.92893333333336" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="702.156" cy="194.66826666666668" r="4" fill="#a0d0e0" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg><div class="morris-hover morris-default-style" style="left: 304.782px; top: 122px; display: none;"><div class="morris-hover-row-label">2012 Q1</div><div class="morris-hover-point" style="color: #a0d0e0">
+  Item 1:
+  6,810
+</div><div class="morris-hover-point" style="color: #3c8dbc">
+  Item 2:
+  1,914
+</div></div></div>
+              <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"><svg height="300" version="1.1" width="757.156" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.2.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><path fill="none" stroke="#3c8dbc" d="M378.578,243.33333333333331A93.33333333333333,93.33333333333333,0,0,0,466.80575519497705,180.44625304313007" stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path><path fill="#3c8dbc" stroke="#ffffff" d="M378.578,246.33333333333331A96.33333333333333,96.33333333333333,0,0,0,469.64164732624414,181.4248826052307L506.1931459070204,194.03833029452744A135,135,0,0,1,378.578,285Z" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#f56954" d="M466.80575519497705,180.44625304313007A93.33333333333333,93.33333333333333,0,0,0,294.8628462783141,108.73398312817662" stroke-width="2" opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;"></path><path fill="#f56954" stroke="#ffffff" d="M469.64164732624414,181.4248826052307A96.33333333333333,96.33333333333333,0,0,0,292.17200205154563,107.40757544301087L253.00526941747114,88.10097469226493A140,140,0,0,1,510.91963279246556,195.6693795646951Z" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#00a65a" d="M294.8628462783141,108.73398312817662A93.33333333333333,93.33333333333333,0,0,0,378.5486784690488,243.333328727518" stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path><path fill="#00a65a" stroke="#ffffff" d="M292.17200205154563,107.40757544301087A96.33333333333333,96.33333333333333,0,0,0,378.5477359912682,246.3333285794739L378.53558849987417,284.9999933380171A135,135,0,0,1,257.4900097954186,90.31165416754118Z" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="378.578" y="140" text-anchor="middle" font-family="&quot;Arial&quot;" font-size="15px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: Arial; font-size: 15px; font-weight: 800;" font-weight="800" transform="matrix(1,0,0,1,0,0)"><tspan dy="140" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">In-Store Sales</tspan></text><text x="378.578" y="160" text-anchor="middle" font-family="&quot;Arial&quot;" font-size="14px" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: Arial; font-size: 14px;" transform="matrix(1,0,0,1,0,0)"><tspan dy="160" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">30</tspan></text></svg></div>
+            </div>
+          </div>
+          <!-- /.nav-tabs-custom -->
+
+          <!-- TO DO List -->
+          <div class="box box-primary">
+            <div class="box-header ui-sortable-handle" style="cursor: move;">
+              <i class="ion ion-clipboard"></i>
+
+              <h3 class="box-title">To Do List</h3>
+
+              <div class="box-tools pull-right">
+                <ul class="pagination pagination-sm inline">
+                  <li><a href="#">«</a></li>
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">»</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+              <ul class="todo-list ui-sortable">
+                <li>
+                  <!-- drag handle -->
+                  <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+                  <!-- checkbox -->
+                  <input type="checkbox" value=""></input>
+                  <!-- todo text -->
+                  <span class="text">Design a nice theme</span>
+                  <!-- Emphasis label -->
+                  <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                  <!-- General tools such as edit or delete-->
+                  <div class="tools">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-trash-o"></i>
+                  </div>
+                </li>
+                <li>
+                      <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+                  <input type="checkbox" value=""></input>
+                  <span class="text">Make the theme responsive</span>
+                  <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+                  <div class="tools">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-trash-o"></i>
+                  </div>
+                </li>
+                <li>
+                      <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+                  <input type="checkbox" value=""></input>
+                  <span class="text">Let theme shine like a star</span>
+                  <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+                  <div class="tools">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-trash-o"></i>
+                  </div>
+                </li>
+                <li>
+                      <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+                  <input type="checkbox" value=""></input>
+                  <span class="text">Let theme shine like a star</span>
+                  <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
+                  <div class="tools">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-trash-o"></i>
+                  </div>
+                </li>
+                <li>
+                      <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+                  <input type="checkbox" value=""></input>
+                  <span class="text">Check your messages and notifications</span>
+                  <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+                  <div class="tools">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-trash-o"></i>
+                  </div>
+                </li>
+                <li>
+                      <span class="handle ui-sortable-handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+                  <input type="checkbox" value=""></input>
+                  <span class="text">Let theme shine like a star</span>
+                  <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
+                  <div class="tools">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-trash-o"></i>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix no-border">
+              <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+            </div>
+          </div>
+          <!-- /.box -->
+
+
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable ui-sortable">
+
+
+
+          <!-- solid sales graph -->
+          <div class="box box-solid bg-teal-gradient">
+            <div class="box-header ui-sortable-handle" style="cursor: move;">
+              <i class="fa fa-th"></i>
+
+              <h3 class="box-title">Sales Graph</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body border-radius-none">
+              <div class="chart" id="line-chart" style="height: 250px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="250" version="1.1" width="490.828" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative; left: -0.15625px; top: -0.59375px;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.2.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="42" y="214" text-anchor="end" font-family="Open Sans" font-size="10px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: &quot;Open Sans&quot;; font-size: 10px; font-weight: normal;" font-weight="normal"><tspan dy="3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><path fill="none" stroke="#efefef" d="M54.5,214H465.828" stroke-width="0.4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42" y="166.75" text-anchor="end" font-family="Open Sans" font-size="10px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: &quot;Open Sans&quot;; font-size: 10px; font-weight: normal;" font-weight="normal"><tspan dy="3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">5,000</tspan></text><path fill="none" stroke="#efefef" d="M54.5,166.75H465.828" stroke-width="0.4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42" y="119.5" text-anchor="end" font-family="Open Sans" font-size="10px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: &quot;Open Sans&quot;; font-size: 10px; font-weight: normal;" font-weight="normal"><tspan dy="3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">10,000</tspan></text><path fill="none" stroke="#efefef" d="M54.5,119.5H465.828" stroke-width="0.4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42" y="72.25" text-anchor="end" font-family="Open Sans" font-size="10px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: &quot;Open Sans&quot;; font-size: 10px; font-weight: normal;" font-weight="normal"><tspan dy="3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">15,000</tspan></text><path fill="none" stroke="#efefef" d="M54.5,72.25H465.828" stroke-width="0.4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42" y="25" text-anchor="end" font-family="Open Sans" font-size="10px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: &quot;Open Sans&quot;; font-size: 10px; font-weight: normal;" font-weight="normal"><tspan dy="3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">20,000</tspan></text><path fill="none" stroke="#efefef" d="M54.5,25H465.828" stroke-width="0.4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="390.3595577156743" y="226.5" text-anchor="middle" font-family="Open Sans" font-size="10px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: &quot;Open Sans&quot;; font-size: 10px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,5.5)"><tspan dy="3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2013</tspan></text><text x="207.43604860267314" y="226.5" text-anchor="middle" font-family="Open Sans" font-size="10px" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: &quot;Open Sans&quot;; font-size: 10px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,5.5)"><tspan dy="3.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2012</tspan></text><path fill="none" stroke="#efefef" d="M54.5,188.8063C65.99519319562576,188.5417,88.98557958687728,190.4009875,100.48077278250304,187.74790000000002C111.9759659781288,185.09481250000002,134.96635236938033,168.75624016393445,146.46154556500608,167.5816C157.83179100850546,166.41972766393442,180.57228189550426,180.6438625,191.94252733900365,178.40185C203.31277278250303,176.15983749999998,226.05326366950183,151.8811350409836,237.42350911300122,149.6455C248.91870230862696,147.3852975409836,271.9090886998785,158.0678125,283.40428189550425,160.4185C294.89947509113,162.7691875,317.88986148238155,179.6189893442623,329.3850546780073,168.451C340.7553001215067,157.40440184426228,363.4957910085054,78.52883321823204,374.86603645200483,71.56015C386.11133414337786,64.66804571823204,408.6019295261239,105.24937403846154,419.84722721749694,113.00785C431.3424204131227,120.93873653846154,454.33280680437423,128.9901625,465.828,134.3176" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><circle cx="54.5" cy="188.8063" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="100.48077278250304" cy="187.74790000000002" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="146.46154556500608" cy="167.5816" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="191.94252733900365" cy="178.40185" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="237.42350911300122" cy="149.6455" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="283.40428189550425" cy="160.4185" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="329.3850546780073" cy="168.451" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="374.86603645200483" cy="71.56015" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="419.84722721749694" cy="113.00785" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="465.828" cy="134.3176" r="4" fill="#efefef" stroke="#efefef" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg><div class="morris-hover morris-default-style" style="left: 404.781px; top: 67px; display: none;"><div class="morris-hover-row-label">2013 Q2</div><div class="morris-hover-point" style="color: #efefef">
+  Item 1:
+  8,432
+</div></div></div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer no-border">
+              <div class="row">
+                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                  <div style="display:inline;width:60px;height:60px;"><canvas width="60" height="60"></canvas><input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgcolor="#39CCCC" readonly="readonly" style="width: 34px; height: 20px; position: absolute; vertical-align: middle; margin-top: 20px; margin-left: -47px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Arial; text-align: center; color: rgb(57, 204, 204); padding: 0px; -webkit-appearance: none;"></input></div>
+
+                  <div class="knob-label">Mail-Orders</div>
+                </div>
+                <!-- ./col -->
+                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                  <div style="display:inline;width:60px;height:60px;"><canvas width="60" height="60"></canvas><input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgcolor="#39CCCC" readonly="readonly" style="width: 34px; height: 20px; position: absolute; vertical-align: middle; margin-top: 20px; margin-left: -47px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Arial; text-align: center; color: rgb(57, 204, 204); padding: 0px; -webkit-appearance: none;"></input></div>
+
+                  <div class="knob-label">Online</div>
+                </div>
+                <!-- ./col -->
+                <div class="col-xs-4 text-center">
+                  <div style="display:inline;width:60px;height:60px;"><canvas width="60" height="60"></canvas><input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgcolor="#39CCCC" readonly="readonly" style="width: 34px; height: 20px; position: absolute; vertical-align: middle; margin-top: 20px; margin-left: -47px; border: 0px; background: none; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Arial; text-align: center; color: rgb(57, 204, 204); padding: 0px; -webkit-appearance: none;"></input></div>
+
+                  <div class="knob-label">In-Store</div>
+                </div>
+                <!-- ./col -->
+              </div>
+              <!-- /.row -->
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+
+        </section>
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+			</section>
+		</div>
+		<div sec:authorize-url="/usuario" >
+	<!--	  Este contenido solo puede ser visto por los <b>Empleados</b> de la mutual.   -->
+		            <!-- Calendar -->
+       <br></br>
+       <h2>CRUD Java</h2>
+       <br></br>
+       <br></br>
+       <p style="font-size:22px"> Este es un CRUD o ABM realizado en Java con SpringBoot  </p>
+        <br></br>
+       <p style="font-size:18px">  Para el desarrollo de este software trabaj&eacute; con una arquitectura ya armada <br> </br> 
+       y sobre ella form&eacute; la ruta para poder realizar el Alta, Baja y Modificaci&oacute;n de datos <br>  </br>
+       creando las capas de HTML, jQuery y Javascript, junto con SpringBoot hice las capas de Java de Rest, Dao y Service y la Entidad conectada a la Base de Datos.   </p>
+      
+      <br></br>
+       <p style="font-size:18px">  Para contacto y ver mas trabajos :  <a href="https://federicosavastano.com" target="_blank"> federicosavastano.com </a>  </p>
+       
+       <!--  -->
+       
+           
+		</div>
+		
+		  
+		
+		<div sec:authorize="hasAuthority('AFILIADO')">
+		  Este contenido solo puede ser visto por los <b>Afiliados</b>.
+		</div>    
+ </section> 
+</th:block>
+
+<th:block layout:fragment="content">
+ <section class="content">
+ </section>
+</th:block>
+</html>

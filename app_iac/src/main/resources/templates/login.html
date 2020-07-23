@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>CRUD Java | Log in</title>
+
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	  name="viewport" />
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/font-awesome.min.css}" />
+<link rel="stylesheet" th:href="@{/webjars/ionicons/css/ionicons.min.css}" />
+<link rel="stylesheet" th:href="@{/css/AdminLTE.min.css}" />
+<link rel="stylesheet" th:href="@{/css/skins/_all-skins.min.css}" />
+<link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/css/bootstrap-datepicker.min.css}" />
+<link rel="stylesheet" th:href="@{/webjars/bootstrap-daterangepicker/css/bootstrap-daterangepicker.css}" />
+
+<!--[if lt IE 9]>
+  <script th:src="@{/webjars/html5shiv/html5shiv.min.js}"></script>
+  <script th:src="@{/webjars/respond/dest/respond.min.js}"></script>
+  <![endif]-->
+
+<link rel="stylesheet" th:href="@{/css/source-sans-pro/source-sans-pro.css}" />
+<!--  div th:replace="fragments/header :: header-css"/> -->
+</head>
+<body class="hold-transition login-page">
+
+	<!--  div th:replace="fragments/header :: header"/> -->
+	<div class="login-box">
+		<div class="login-logo">
+			<b><i>CRUD Java</i></b>
+		</div>
+		<div class="login-box-body">
+			<p class="login-box-msg">Por favor, ingrese usuario y contraseña</p>
+			<div th:if="${param.error}">
+				<div class="alert alert-danger">Password inválido.</div>
+			</div>
+			<div th:if="${param.logout}">
+				<div class="alert alert-info">Usted ha salido del sistema.</div>
+			</div>
+			<form th:action="@{/login}" method="post">
+				<div class="form-group has-feedback">
+					
+					<input type="text" id="email" name="email" th:placeholder="Email"
+					class="form-control input-lg" required="required" autofocus="autofocus" /> 
+				
+					<!--  input type="text" name="username" id="username"
+						class="form-control input-lg" placeholder="Usuario"
+						required="required" autofocus="autofocus" / --> 
+						<span class="glyphicon glyphicon-user form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="password" name="password" id="password"
+						class="form-control input-lg" placeholder="Contraseña"
+						required="required" /> <span
+						class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+					</div>
+					<!-- /.col -->
+				</div>
+			</form>
+		</div>
+		<!-- /.login-box-body -->
+	</div>
+	<!-- /.login-box -->
+	<div class="row">
+		<div class="col-xs-3"></div>
+		<div class="col-xs-6" style="background-color: white;">
+			<div class="box-header with-border">
+				<h3 class="box-title">Usuarios para Demo</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<th>Id</th>
+							<th>usuario</th>
+							<th>Contraseña</th>
+							<th>Perfil</th>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>usuario@localhost.com.ar</td>
+							<td>usuario</td>
+							<td>USUARIO</td>
+						</tr>												
+					</tbody>
+				</table>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+		<div class="col-xs-3"></div>
+	</div>
+	<!-- /.row -->		
+
+
+	<!-- jQuery 3 -->
+	<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<!-- Bootstrap 3.3.7 -->
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<!-- AdminLTE App -->
+	<script th:src="@{/js/adminlte.min.js}"></script>
+	<!--  div th:replace="fragments/footer :: footer"/>  -->
+
+</body>
+</html>
+
+
+	<!-- jQuery 3 -->
+	
+	

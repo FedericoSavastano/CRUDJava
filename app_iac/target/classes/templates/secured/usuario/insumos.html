@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='CRUD Java - Insumos'">
+
+
+<th:block layout:fragment="content-head">
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/jquery.dataTables.min.css}"></link>
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/dataTables.bootstrap.min.css}"></link>
+</th:block>
+
+
+<th:block layout:fragment="content-header">
+	 <section class="content-header">
+	   <h3>
+	     ABM INSUMOS 
+	   </h3>
+	 </section> 
+</th:block>
+
+<th:block layout:fragment="content">
+	<section class="content">
+	
+	
+
+		
+		<br></br>
+		<br></br>
+		<label>INSUMOS</label>
+		
+		 
+		
+		
+		<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Producto</th>
+       <th scope="col">Cantidad</th>
+        <th scope="col">Observación</th>
+    </tr>
+  </thead>
+  <tbody  id="tablabodyinsumos">
+    <tr>
+      <th scope="row">1</th>
+       
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+       
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      
+    </tr>
+  </tbody>
+</table>
+	 
+		
+
+
+<!-- botonera -->
+
+
+<button type="button" class="btn btn-primary"  id="cargaInsumoBtn" data-toggle="modal" data-target="#cargaInsumo" data-whatever="@mdo">Agregar Insumo</button>
+<button type="button" class="btn btn-success" id="modificaInsumoBtn" data-toggle="modal" data-target="#modificaInsumo" data-whatever="@fat">Modificar Insumo</button>
+<button type="button" class="btn btn-danger" id="borraInsumoBtn" data-toggle="modal" data-target="#borraInsumo" data-whatever="@getbootstrap">Borrar Insumo</button>
+
+<!-- cargar insumo -->
+
+<div class="modal fade" id="cargaInsumo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Insumo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Marca:</label>
+            <input type="text" class="form-control" id="marca"></input>
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Producto:</label>
+            <input type="text" class="form-control" id="producto"></input>
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Cantidad:</label>
+            <input type="number" class="form-control" id="cantidad"></input>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Observación:</label>
+            <textarea class="form-control" id="observacion"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="guardarBtn" onclick="guardarInsumo()">Guardar Insumo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modificador -->
+
+<div class="modal fade" id="modificaInsumo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Modificar Insumo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <label>Seleccione el insumo a modificar   </label>
+      <select class="selectInsumos" onchange="cargar()" id="selectmodif"></select>
+      
+      
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Marca:</label>
+            <input type="text" class="form-control" id="marca_edit"></input>
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Producto:</label>
+            <input type="text" class="form-control" id="producto_edit"></input>
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Cantidad:</label>
+            <input type="number" class="form-control" id="cantidad_edit"></input>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Observación:</label>
+            <textarea class="form-control" id="observacion_edit"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="actualizarBtn" onclick="actualizarInsumo()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- eliminar -->
+
+<div class="modal fade" id="borraInsumo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel3">Borrar Insumo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <label>Seleccione el insumo a borrar   </label>
+      <select class="selectInsumos" id="selectborrar" ></select>
+      
+      
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="borrarBtn" onclick="borrarInsumo()">Borrar Insumo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+	</section>
+
+ 	
+</th:block>
+
+
+<th:block layout:fragment="footer-script">
+	<script th:src="@{/webjars/bootstrap-validator/dist/validator.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/dataTables.bootstrap.min.js}"></script>
+	<script th:src="@{/js/secured/usuario/insumos.js}"></script>	
+</th:block>
+
+
+</html>

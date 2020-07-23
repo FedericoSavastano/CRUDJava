@@ -1,0 +1,512 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: acurci
+    changes:
+    - createTable:
+        tableName: USR_CLIENTE
+        columns:
+        - column:
+            name: ID
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+        - column:
+            name: CUIT
+            type: varchar(11)
+            constraints:
+              nullable: false
+        - column:
+            name: DENOMINACION
+            type: varchar(255)
+            constraints:
+              nullable: false
+        - column:
+            name: VERSION
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: DELETED_TIME
+            type: timestamp
+            constraints:
+              nullable: true
+- changeSet:
+    id: 7
+    author: acurci
+    changes:
+    - createTable:
+        tableName: USR_USUARIO
+        columns:
+        - column:
+            name: ID
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: USERNAME
+            type: varchar(15)
+            constraints:
+              nullable: false
+        - column:
+            name: NOMBRE
+            type: varchar(64)
+            constraints:
+              nullable: false
+        - column:
+            name: APELLIDO
+            type: varchar(64)
+            constraints:
+              nullable: false
+        - column:
+            name: EMAIL
+            type: varchar(64)
+            constraints:
+              nullable: false
+        - column:
+            name: ENABLED
+            type: boolean
+            constraints:
+              nullable: false
+        - column:
+            name: ATTEMPTS
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: ACCOUNT_NON_LOCKED
+            type: boolean
+            constraints:
+              nullable: false
+        - column:
+            name: ACCOUNT_NON_EXPIRED
+            type: boolean
+            constraints:
+              nullable: false
+        - column:
+            name: CREDENTIALS_NON_EXPIRED
+            type: boolean
+            constraints:
+              nullable: false
+        - column:
+            name: PASSWORD
+            type: varchar(255)
+            constraints:
+              nullable: false
+        - column:
+            name: VERSION
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: CLIENT_ID
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: DELETED_TIME
+            type: timestamp
+            constraints:
+              nullable: true
+    - addForeignKeyConstraint:
+        baseColumnNames: CLIENT_ID
+        baseTableName: USR_USUARIO
+        constraintName: FK_USUARIO_CLIENTE
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: USR_CLIENTE
+- changeSet:
+    id: 8
+    author: acurci
+    changes:
+    - createTable:
+        tableName: USR_ROL
+        columns:
+        - column:
+            name: ID
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: ROL
+            type: varchar(15)
+            constraints:
+              nullable: false
+        - column:
+            name: DESCRIPCION
+            type: varchar(255)
+            constraints:
+              nullable: false
+        - column:
+            name: VERSION
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: DELETED_TIME
+            type: timestamp
+            constraints:
+              nullable: true
+- changeSet:
+    id: 9
+    author: acurci
+    changes:
+    - createTable:
+        tableName: USR_USUARIO_ROL
+        columns:
+        - column:
+            name: USUARIO_ID
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: ROL_ID
+            type: int
+            constraints:
+              nullable: false
+    - addForeignKeyConstraint:
+        baseColumnNames: USUARIO_ID
+        baseTableName: USR_USUARIO_ROL
+        constraintName: FK_USUARIOROL_USUARIO
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: USR_USUARIO
+    - addForeignKeyConstraint:
+        baseColumnNames: ROL_ID
+        baseTableName: USR_USUARIO_ROL
+        constraintName: FK_USUARIOROL_ROL
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: ID
+        referencedTableName: USR_ROL
+- property:
+    name: now
+    value: now()
+    dbms: postgresql
+- changeSet:
+    id: 10
+    author: acurci
+    changes:
+    - loadData:
+        encoding: UTF-8
+        file: db/initialData/clientes.csv
+        separator: ;
+        tableName: USR_CLIENTE
+- changeSet:
+    id: 11
+    author: acurci
+    changes:
+    - loadData:
+        encoding: UTF-8
+        file: db/initialData/roles.csv
+        separator: ;
+        tableName: USR_ROL
+- changeSet:
+    id: 12
+    author: acurci
+    changes:
+    - loadData:
+        encoding: UTF-8
+        file: db/initialData/usuarios.csv
+        separator: ;
+        tableName: USR_USUARIO
+- changeSet:
+    id: 13
+    author: acurci
+    changes:
+    - loadData:
+        encoding: UTF-8
+        file: db/initialData/usuarios_roles.csv
+        separator: ;
+        tableName: USR_USUARIO_ROL
+- changeSet:
+    id: 5
+    author: dschwarz
+    changes:
+    - createTable:
+        tableName: USR_PERSONA
+        columns:
+        - column:
+            name: ID
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: NOMBRE
+            type: varchar(50)
+            constraints:
+              nullable: false
+        - column:
+            name: APELLIDO
+            type: varchar(50)
+            constraints:
+              nullable: false
+        - column:
+            name: NRO_DOCUMENTO
+            type: varchar(12)
+            constraints:
+              nullable: false
+        - column:
+            name: FECHA
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: EMAIL
+            type: varchar(100)
+        - column:
+            name: VERSION
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: DELETED_TIME
+            type: timestamp
+            constraints:
+              nullable: true
+- changeSet:
+    id: 18
+    author: curci
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: CLIENT_ID
+            type: int         
+        tableName: USR_PERSONA
+- changeSet:
+    id: 19
+    author: curci
+    changes:
+    - modifyDataType:
+        columnName: NRO_DOCUMENTO
+        newDataType: varchar(15)    
+        tableName: USR_PERSONA
+- changeSet:
+    id: 204
+    author: fsavastano
+    changes:
+    - createTable:
+        tableName: USR_VEHICULO
+        columns:
+        - column:
+            name: ID
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+        - column:
+            name: PATENTE
+            type: varchar(20)
+            constraints:
+              nullable: false
+        - column:
+            name: MODELO
+            type: varchar(255)
+            constraints:
+              nullable: false
+        - column:
+            name: VERSION
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_USER
+            type: int
+            constraints:
+              nullable: true
+        - column:
+            name: UPDATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: DELETED_TIME
+            type: timestamp
+            constraints:
+              nullable: true
+- changeSet:
+    id: 184
+    author: fsavastano
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: CLIENT_ID
+            type: int         
+        tableName: USR_VEHICULO
+        
+- changeSet:
+    id: 444
+    author: fsavastano
+    changes:
+    - createTable:
+        tableName: USR_INSUMO
+        columns:
+        - column:
+            name: ID
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+        - column:
+            name: MARCA
+            type: varchar(20)
+            constraints:
+              nullable: false
+        - column:
+            name: PRODUCTO
+            type: varchar(25)
+            constraints:
+              nullable: false
+        - column:
+            name: CANTIDAD
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: OBSERVACION
+            type: varchar(255)
+            constraints:
+              nullable: false
+        - column:
+            name: VERSION
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: CREATED_USER
+            type: int
+            constraints:
+              nullable: true
+        - column:
+            name: UPDATED_TIME
+            type: timestamp
+            constraints:
+              nullable: false
+        - column:
+            name: UPDATED_USER
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: DELETED_TIME
+            type: timestamp
+            constraints:
+              nullable: true
+- changeSet:
+    id: 555
+    author: fsavastano
+    changes:
+    - addColumn:
+        columns:
+        - column:
+            name: CLIENT_ID
+            type: int         
+        tableName: USR_INSUMO
+ 
+        

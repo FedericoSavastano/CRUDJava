@@ -1,0 +1,5 @@
+id;codigo;descripcion;version;created_time;created_user;updated_time;updated_user;deleted_time
+1;FIJO;Suscripciones de valor fijo a un servicio;1;${now};0;${now};0;null
+2;CALCULADO;Suscripciones de valor calculado a un servicio;1;${now};0;${now};0;null
+3;FACTURADO;Suscripciones cuyo monto ingresa de una factura de terceros;1;${now};0;${now};0;null
+4;EVENTUAL;Servicios de valor y duración variables;1;${now};0;${now};0;null

@@ -1,0 +1,97 @@
+#Roles Definidos
+CLIENTE_GET:
+    - GENOMA
+
+CLIENTE_POST:
+    - GENOMA
+
+CLIENTE_PUT:
+    - GENOMA
+
+CLIENTE_DELETE:
+    - GENOMA
+    
+SERVICIOTIPO_GET:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+    
+    
+USUARIO_GET:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+USUARIO_POST:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+USUARIO_PUT:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+USUARIO_DELETE:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+USUARIO_GET_ME:
+    - AFILIADO
+PERSONA_GET:
+    - ADMIN
+    - USUARIO
+
+PERSONA_POST:
+    - ADMIN
+    - USUARIO
+
+PERSONA_DELETE:
+    - ADMIN
+    - USUARIO
+
+PERSONA_PUT:
+    - ADMIN
+    - USUARIO
+    
+VEHICULO_GET:
+    - GENOMA  
+    - ADMIN
+    - USUARIO
+
+VEHICULO_POST:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+VEHICULO_DELETE:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+VEHICULO_PUT:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+INSUMO_GET:
+    - GENOMA  
+    - ADMIN
+    - USUARIO
+
+INSUMO_POST:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+INSUMO_DELETE:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+
+INSUMO_PUT:
+    - GENOMA
+    - ADMIN
+    - USUARIO
+

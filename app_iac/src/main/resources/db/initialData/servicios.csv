@@ -1,0 +1,5 @@
+id;codigo;descripcion;client_id;version;created_time;created_user;updated_time;updated_user;proveedor_id;servicio_tipo_id
+-1;SERV_VAR;Servicio Demo Variable;-1;1;${now};-2;${now};-2;-1;VARIABLES
+-2;SERV_FIJO;Servicio Demo Fijo;-1;1;${now};-2;${now};-2;-2;FIJOS
+-3;SERV_FACT;Servicio Demo Facturado;-1;1;${now};-2;${now};-2;-3;FACTURADO
+-4;SERV_EVENT;Servicio Demo Eventual;-1;1;${now};-2;${now};-2;-4;EVENTUAL

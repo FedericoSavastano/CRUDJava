@@ -1,0 +1,4 @@
+id,definicion,valor,client_id,version,created_time,created_user,updated_time,updated_user
+-1,-1,ar.com.genomasoft.fenix.bancos.Santander,-1,1,${now},-2,${now},-2
+-2,-2,generar,-1,1,${now},-2,${now},-2
+-3,-3,descargar,-1,1,${now},-2,${now},-2

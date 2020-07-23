@@ -1,0 +1,6 @@
+id;username;nombre;apellido;email;enabled;attempts;ACCOUNT_NON_LOCKED;ACCOUNT_NON_EXPIRED;CREDENTIALS_NON_EXPIRED;password;version;client_id;created_time;created_user;updated_time;updated_user;deleted_time
+0;system;SYSTEM;BATCH;system@genomasoft.com.ar;false;0;true;true;true;$2a$04$ocbdFfPj32x9OU06lfZeTeW7MPNuRtrzzKPtIFiea4eEGC.dIj88O;1;0;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP
+-1;genoma;GENOMA;SUPERUSUARIO;genoma@localhost.com.ar;true;0;true;true;true;$2a$04$M7M0rrJS/OO/3YFeEy1k..lQ.AbO87uQ4xKZnda8YpI.ka9tG/oya;1;-1;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;null
+-2;admin;MUTUAL;ADMINISTRADOR;admin@localhost.com.ar;true;0;true;true;true;$2a$04$4ApP5OjiDUiwtmphuNTzLuDL3BovbO8XUaXzHBp6KfVYYl.2PilTy;1;-1;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;null
+-3;usuario;MUTUAL;USUARIO;usuario@localhost.com.ar;true;0;true;true;true;$2a$04$Z/RC928pqO24w5hHOr9cieQGtyB1Hyht4Wn5AcpDSo7bERSDXs4Oi;1;-1;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;null
+-4;afiliado;MUTUAL;AFILIADO;afiliado@localhost.com.ar;true;0;true;true;true;$2a$04$7CjFHmYYkFhJHrXatvz4BeeDzIuiIQ99Ze2kaVXipxIzKTdPUlWla;1;-1;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;null

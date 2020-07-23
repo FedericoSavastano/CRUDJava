@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      layout:decorator="layout"
+      th:with="title='CRUD Java | Info'">
+
+
+<th:block layout:fragment="content-head">
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/jquery.dataTables.min.css}" ></link>
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/dataTables.bootstrap.min.css}" ></link>
+</th:block>
+
+
+<th:block layout:fragment="content-header">
+ <section class="content-header">
+   <h1>
+        <small>Información</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a th:href="@{/}"  ><i class="fa fa-home"></i> Inicio</a></li>
+        <li><a th:href="@{/info}"  class="active"><i class="fa fa-sign-in"></i> Información</a></li>       
+      </ol>
+ </section> 
+</th:block>
+
+<th:block layout:fragment="content">
+ <section class="content">
+      <h5>Referencias:</h5>
+      <ol>
+      	<li><a href="https://adminlte.io/themes/AdminLTE/index.html" target="_blank">Admin LTE</a></li>
+      	<li><a href="https://datatables.net/" target="_blank">DataTables</a></li>
+      	<li><a href="https://www.liquibase.org/documentation/" target="_blank">Liquibase</a></li>
+		<li>Logged user:<span sec:authentication="name">Bob</span></li>
+		<li>Roles:<span sec:authentication="principal.roles">[ROLE_USER, ROLE_ADMIN]</span></li>
+		<li>Authorities: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span></li>
+      </ol>
+ </section>
+</th:block>
+
+<th:block layout:fragment="footer-script">
+	
+</th:block>
+
+
+</html>

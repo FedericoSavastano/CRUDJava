@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" th:with="title='CRUD Java - Personas'">
+
+
+<th:block layout:fragment="content-head">
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/jquery.dataTables.min.css}"></link>
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/dataTables.bootstrap.min.css}"></link>
+</th:block>
+
+
+<th:block layout:fragment="content-header">
+	 <section class="content-header">
+	   <h3>
+	     Administrar Personas
+	   </h3>
+	   <ol class="breadcrumb">  <li><a th:href="@{/index}" ><i class="fa fa-home"></i> Inicio</a></li>
+	     <li><a th:href="@{/genoma/personas}" class="active"><i class="fa fa-plus-square"></i> Personas</a></li>      
+	   </ol>
+	 </section> 
+</th:block>
+
+<th:block layout:fragment="content">
+	<section class="content">
+
+		<div class="box">
+            <div class="box-body">
+              <div class="alert alert-success" id="success-alert" role="alert" hidden="true">
+  					Operación Exitosa
+			  </div>
+			  
+			  <div class="alert alert-danger" id="error-alert" role="alert" hidden="true">
+  					Ocurrió un error al realizar la operación
+			  </div>
+            
+              <table id="tblPersonas" class="table table-bordered table-striped" style="width: 100%;">
+                <thead>
+                <tr>
+                  <th class="text-left">Id</th>
+                  <th class="text-left">Nombre</th>
+                  <th class="text-left">Apellido</th>
+                  <th class="text-left">Documento</th>
+                  <th class="text-left">Fecha De Nacimiento</th>                  
+				  <th class="text-center">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>                        
+                </tbody>
+              </table>
+              <div class="form-group pull-right" style="margin-right:7px; padding-right:1em;">
+              	 <button type="button" onclick="showPersonaModal();" class="btn btn-success">Nueva Persona</button>
+              </div>
+              
+              <div class="form-group pull-left">
+              	 <a type="button" class="btn btn-default" th:href="@{/api/personas/pdf}" target="_blank"><i class="fa fa-print"></i> Imprimir</a>
+              </div>             
+            </div>
+            
+            	<button type="button" OnClick="Filtrar();" class="btn btn-danger" >Filtrar</button>
+            
+            <!-- /.box-body -->
+ 		</div>
+	</section>
+
+
+
+	<!--  
+	#############################################################
+    Modal Alta Persona
+ 	#############################################################  
+ 	-->
+	<div id="modal-entidad" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salir();"><i class="fa fa-close"></i> </button>
+	        		<h4 id="modal-entidad-title" class="modal-title">Nueva Persona</h4>
+	      		</div>
+	      		<form id="frmPersona" data-toggle="validator">
+		      		<div class="modal-body">
+		       			<input type="hidden" id="accion-form" name="accion-form" value="POST"/>
+		       			<input type="hidden" id="txtVersion" name="txtVersion"/>
+		       			<input type="hidden" id="txtId" name="txtId"/>
+		        	
+				        <div class="form-group">
+				        	<label for="txtNombre">Nombres</label>
+				        	<input type="text" required="required" id="txtNombre" class="form-control" name="txtNombre" placeholder="Nombres" pattern="[a-zA-Z ]{3,50}" data-onlyletters="true"/>
+				        	<div class="help-block with-errors"></div>
+				        </div>
+		        	        
+				        <div class="form-group">
+				        	<label for="txtApellido">Apellidos</label>
+				        	<input type="text" required="required" id="txtApellido" class="form-control" name="txtApellido" placeholder="Apellidos" pattern="[a-zA-Z ]{3,50}" data-onlyletters="true"/>
+				        	<div class="help-block with-errors"></div>
+				        </div>        
+		
+						<div class="row">
+							<div class="col-md-4">	
+								<div class="form-group">
+						        	<label for="txtNroDocumento">Núm. Documento</label>
+						        	<input type="number" required="required" id="txtNroDocumento" class="form-control" name="txtNroDocumento" placeholder="99999999" data-lengthnumdoc="true"/>
+						        	<div class="help-block with-errors"></div>
+						        </div>
+						    </div>
+						</div>
+	             
+	             		<div class="row">
+							<div class="col-md-4">	
+								<div class="form-group">
+						        	<label for="txtFDN">Fecha De Nacimiento</label>
+						        	<input type="date" required="required" id="txtFDN" class="form-control" name="txtFDN"/>
+						        	<div class="help-block with-errors"></div>
+						        </div>
+						    </div>
+						</div>
+	             
+						<div class="row">
+							<div class="col-md-8">	             
+								<div class="form-group">
+						        	<label for="txtEmail">Email</label>
+									<div class="input-group">
+						                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+							        	<input type="email" id="txtEmail" class="form-control" name="txtEmail" placeholder="Email" />
+						            </div>
+						        	<div class="help-block with-errors"></div>
+						        </div>
+							</div>							
+						</div>	        	        
+	      			</div>
+	      			<div class="alert alert-danger" id="error-form-alert" role="alert" hidden="true">
+		  			</div>
+	            
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-default" onclick="salir();">Cancelar</button>
+			        	<button type="submit" id="btnProcesar" class="btn btn-primary">Guardar</button>
+			      	</div>
+	      		</form>
+	    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+ 	
+</th:block>
+
+
+<th:block layout:fragment="footer-script">
+	<script th:src="@{/webjars/bootstrap-validator/dist/validator.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/dataTables.bootstrap.min.js}"></script>
+	<script th:src="@{/js/secured/usuario/personas.js}"></script>	
+</th:block>
+
+
+</html>

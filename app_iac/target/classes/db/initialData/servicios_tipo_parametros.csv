@@ -1,0 +1,6 @@
+ID;TIPO_SERVICIO;CODIGO;TIPO;LABEL;VERSION;CREATED_TIME;CREATED_USER;UPDATED_TIME;UPDATED_USER
+-30;VARIABLES;nroSuscrip;NUMERO;Columna Nro. Suscripción;1;${now};-2;${now};-2
+-31;VARIABLES;colImporte;NUMERO;Columna Importe;1;${now};-2;${now};-2
+-32;VARIABLES;colDescripcion;NUMERO;Columna Descripción;1;${now};-2;${now};-2
+-33;VARIABLES;filaInicio;NUMERO;Fila de Inicio de los Datos;1;${now};-2;${now};-2
+

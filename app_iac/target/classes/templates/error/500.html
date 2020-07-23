@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout"
+      th:with="title='Fénix | 500'">
+<th:block layout:fragment="content-head">
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/jquery.dataTables.min.css}" />
+                <link rel="stylesheet" th:href="@{/webjars/datatables/css/dataTables.bootstrap.min.css}" />
+</th:block>
+<th:block layout:fragment="content-header" />
+
+<th:block layout:fragment="content">
+    <!-- Main content -->
+    <section class="content">
+      <div class="error-page">
+        <h2 class="headline text-red"> 500</h2>
+        <div class="error-content">
+          <h3 class="text-red"><i class="fa fa-warning"></i> Oops! Algo salió mal.</h3>
+          <p>Ocurrió un error imprevisto, comuníquese con Mesa de ayuda.</p>
+        </div>
+        <!-- /.error-content -->
+      </div>
+      <!-- /.error-page -->
+    </section>
+    <!-- /.content -->
+</th:block>
+
+<th:block layout:fragment="footer-script">
+	<script th:src="@{/webjars/bootstrap-validator/dist/validator.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/webjars/datatables/js/dataTables.bootstrap.min.js}"></script>
+</th:block>
+</html>

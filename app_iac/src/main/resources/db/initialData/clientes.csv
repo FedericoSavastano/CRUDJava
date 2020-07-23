@@ -1,0 +1,4 @@
+id;cuit;denominacion;version;created_time;created_user;updated_time;updated_user;deleted_time
+0;00000000000;SYSTEM;1;${now};0;${now};0;${now}
+-1;11111111111;MUTUAL DEMO;1;${now};0;${now};0;null
+1;30708490616;ASOCIACION MUTUAL ALTERNATIVA SOLIDARIA 3 DE NOVIEMBRE;1;${now};0;${now};0;null

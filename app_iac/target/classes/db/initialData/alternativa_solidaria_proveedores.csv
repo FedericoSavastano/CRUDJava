@@ -1,0 +1,5 @@
+pro_id;pro_cuit;pro_razon_social;nro_cta_cte;client_id;version;created_time;created_user;updated_time;updated_user
+-1;11111111111;Proveedor Demo 1;-1111;-1;1;${now};-2;${now};-2
+-2;22222222222;Proveedor Demo 2;-1111;-1;1;${now};-2;${now};-2
+-3;33333333333;Proveedor Demo 3;-1111;-1;1;${now};-2;${now};-2
+-4;44444444444;Proveedor Demo 4;-1111;-1;1;${now};-2;${now};-2

@@ -1,0 +1,5 @@
+id;rol;descripcion;version;created_time;created_user;updated_time;updated_user;deleted_time
+1;GENOMA;Superusuario - Rol de administración del sistema multicliente;1;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;null
+2;ADMIN;Administrador del cliente;1;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;null
+3;USUARIO;Administrativo de la mutual;1;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;null
+4;AFILIADO;Afiliado de la mutual;1;CURRENT_TIMESTAMP;0;CURRENT_TIMESTAMP;0;null
